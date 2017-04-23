@@ -15,8 +15,10 @@ import java.util.List;
  * Created by Korisnik on 23.4.2017..
  */
 public class Zadatak2DodavanjeVrednosti {
+
     static Dao<Knjiga,Integer> knjigaDao;
     static Dao<Oblast,Integer> oblastDao;
+
     public static void main(String[] args) {
         ConnectionSource conn = null;
 
@@ -61,11 +63,13 @@ public class Zadatak2DodavanjeVrednosti {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }if (conn != null) {
-            try {
-                conn.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+        }finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

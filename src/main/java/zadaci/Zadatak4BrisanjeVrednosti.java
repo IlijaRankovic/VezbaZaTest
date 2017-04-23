@@ -17,11 +17,13 @@ public class Zadatak4BrisanjeVrednosti {
             conn = new JdbcConnectionSource("jdbc:sqlite:knjigaOblast.db");
         } catch (SQLException e) {
             e.printStackTrace();
-        }if (conn != null) {
-            try {
-                conn.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+        }finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 

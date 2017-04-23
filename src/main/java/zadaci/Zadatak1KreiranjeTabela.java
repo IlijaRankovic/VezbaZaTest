@@ -25,11 +25,13 @@ public class Zadatak1KreiranjeTabela {
             TableUtils.createTable(conn, Oblast.class);
         } catch (SQLException e) {
             e.printStackTrace();
-        } if (conn != null) {
-            try {
-                conn.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
